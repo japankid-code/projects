@@ -1,4 +1,5 @@
 import time
+import random
 
 def print_pause(string):
     print(string)
@@ -19,13 +20,14 @@ def valid_input(prompt, options):
 
 def choose_floor():
     response = valid_input("Please enter the number for the floor you would like to visit: \n", 
-                          ["1. Lobby", "2. Engineering", "3. Robo Resources"])
-    if 1 in response:
-        print_pause("After a few moments, you realize that nothing happened \n")
-        print_pause("and you were already in the lobby.")
-    elif 2 in response:
-        print_pause("After a moments, you find yourself in the Robo Resources department")
-    elif 3 in response:
+                          ["1. Lobby", "2. Engineering", "3. Robot Resources"])
+    if "1" in response:
+        print_pause("The door closes and then opens, and you realize... \n")
+        time.sleep(random.randrange(4))
+        print_pause("You already are in the lobby.")
+    elif "2" in response:
+        print_pause("After a moment, you find yourself in the Robot Resources department")
+    elif "3" in response:
         print_pause("After a few moments, you find yourself in the Engineering department.")
     print_pause("But, this is not the right floor for you.")
 

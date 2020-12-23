@@ -21,7 +21,7 @@ intro()
 #         print_pause("An integer plz :)")
 
 while True:
-    print_pause("")
+    print_pause("Here are your options:\n")
     print_pause("1. Lobby\n" 
                 "2. Engineering\n" 
                 "3. Robot Resources\n")

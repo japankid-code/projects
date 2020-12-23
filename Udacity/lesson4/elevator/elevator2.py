@@ -1,5 +1,6 @@
 import time
 import random
+items = []
 
 def print_pause(string):
     time.sleep(1)
@@ -22,7 +23,14 @@ while True:
     if floor == "1":
         print_pause("The door closes and then opens. Your circuitry computes...")
         time.sleep(random.randrange(4))
-        print_pause("You have been in the lobby this whole time.\n...")
+        print_pause("You are now in the lobby.\n...")
+        if "ID card" in items:
+            print_pause("The clerk greets you, but she has already given you your \n"
+                        "ID card, so there is nothing more to do here now.")
+        if "ID card" not in items:
+            
+            print_pause("The clerk greets you and gives you your ID card.")
+            items.append("ID card")
     if floor == "2":
         print_pause("After a moment, you find yourself in the Robot Resources department")
     if floor == "3":

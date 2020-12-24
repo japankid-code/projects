@@ -87,6 +87,7 @@ def first_day():
     print_pause("This is your first day at your new job.")
     print_pause("")
     print_pause("")
+    
 
 def keep_going():
     choice = input("would you like to continue playing? (y/n):\n")

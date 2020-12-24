@@ -1,5 +1,6 @@
 # this is a refactor of elevator2.py
-# various pieces of code were moved into functions instead of
+# various pieces of code were moved into functions instead of while loops
+# list moved into 
 
 import time
 import random
@@ -17,7 +18,7 @@ def intro():
 
 intro()
 
-def first_floor(items):
+def first_floor(items: list):
     print_pause("The door closes and then opens. Your circuitry computes...")
     time.sleep(random.randrange(4))
     print_pause("You are now in the lobby.\n...")
@@ -29,7 +30,7 @@ def first_floor(items):
         items.append("ID card")
     ride_elevator(items)
 
-def second_floor(items):
+def second_floor(items: list):
     print_pause("After a moment, you find yourself in the Robot Resources department.")
     print_pause("The Administrator of the floor greets you.")
     if "handbook" in items:
@@ -44,7 +45,7 @@ def second_floor(items):
             items.append("handbook")
     ride_elevator(items)
 
-def third_floor(items):
+def third_floor(items: list):
     print_pause("After a few moments, you find yourself in the Engineering department.")
     print_pause("Ahead, there is a door. It is locked and you must use your ID chip to get through")
     if "ID card" in items:
@@ -63,7 +64,7 @@ def third_floor(items):
         print_pause("You head back to the elevator.")
     ride_elevator(items)
 
-def ride_elevator(items):
+def ride_elevator(items: list):
     print_pause("Here are your options:")
     print_pause("1. Lobby")
     print_pause("2. Robot Resources")
@@ -76,3 +77,10 @@ def ride_elevator(items):
     elif floor == "3":
         third_floor(items)
     print_pause("You know what you need to do. Please choose another floor.")
+
+def play_game():
+    items = []
+    intro()
+    ride_elevator(items)
+
+play_game()

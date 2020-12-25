@@ -90,15 +90,29 @@ def west_tunnel():
     print_pause("")
 
 def first_day():
-    print_pause("This is your first day at your new job.")
+    
     print_pause("")
-    print_pause("")    
+    print_pause("")
+    tunnel_choice = input("").lower()
+    if tunnel_choice == "north":
+        north_tunnel()
+    if tunnel_choice == "east":
+        east_tunnel()
+    if tunnel_choice == "south":
+        south_tunnel()
+    if tunnel_choice == "west":
+        west_tunnel()
+
 
 def keep_going():
     choice = input("would you like to continue playing? (y/n):\n")
     if choice == "y":
-        print("")
+        print_pause("Finally, your first day at your new job can begin.")
+        print_pause("You make your way from the elevator")
         first_day()
+    else:
+        print_pause("Program terminated.")
+        exit()
 
 def play_game():
     items = []

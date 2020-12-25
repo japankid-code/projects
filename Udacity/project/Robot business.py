@@ -16,6 +16,10 @@ def intro():
     print_pause("Humanity as it was once has ceased to exist.")
     print_pause("You are a robot and have just arrived to start your new assignment at the human processing plant.")
     print_pause("You make your way directly to the elevator and find several buttons.")
+    print_pause("Here are your options:")
+    print_pause("1. Lobby")
+    print_pause("2. Robot Resources")
+    print_pause("3. Engineering")
 
 def first_floor(items: list):
     print_pause("The door closes and then opens. Your circuitry computes...")
@@ -66,10 +70,6 @@ def third_floor(items: list):
     ride_elevator(items)
 
 def ride_elevator(items: list):
-    print_pause("Here are your options:")
-    print_pause("1. Lobby")
-    print_pause("2. Robot Resources")
-    print_pause("3. Engineering")
     floor = input("Please enter the number for the floor you would like to visit:\n")
     if floor == "1":
         first_floor(items)
@@ -106,8 +106,8 @@ def pick_room(items: list):
     print_pause("3. Machine Room")
     print_pause("4. Tool Room")
     room_choice = input("Please enter a number from 1-4, or ??? if unsure:")
-    # if room_choice == "???":
-    #     room_choice = random.randint(4)
+    if room_choice == "???":
+        room_choice = random.randint(range(1-4))
     elif room_choice == "1":
         growing_room(items)
     elif room_choice == "2":

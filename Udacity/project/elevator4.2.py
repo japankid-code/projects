@@ -1,15 +1,16 @@
 # this is a refactor of elevator2.py
 # various pieces of code were moved into functions instead of while loops.
+# everything after ride_elevator function definition was written by me exclusively.
 # items list moved into a function definition, 
-# this means the list has to be called as a parameter in earlier function definitions0.
+# this means the list has to be called as a parameter in earlier function definitions.
+# 
 
 import time
 import random
 
 def print_pause(string):
-    time.sleep(0.5)
-    print(string)
-    
+    time.sleep(0.05)
+    print(string)    
 
 def intro():
     print_pause("Humanity as it was once has ceased to exist.")
@@ -48,6 +49,7 @@ def third_floor(items: list):
     print_pause("Ahead, there is a door. It is locked and you must use your ID chip to get through")
     if "ID card" in items:
         print_pause("You scan your ID chip to get through the door.")
+        print_pause("You make your way through to the front staging area.")
         print_pause("Your program manager greets you, beginning to scan your circuitry.\n"
                     "He explains that you need to have a copy of the employee\n"
                     "handbook in order to start work.")
@@ -56,7 +58,7 @@ def third_floor(items: list):
             print_pause("Congration! You are ready to start your new job as")
             print_pause("the assistant to the vice president of Engineering!")
             items.append("assistant")
-            keep_going()
+            part_two(items)
     else:
         print_pause("Unfortunately, the door is locked and you can't get in. ")
         print_pause("It looks like you need some kind of key card to open the door. ")
@@ -77,42 +79,61 @@ def ride_elevator(items: list):
         third_floor(items)
     print_pause("You know what you need to do. Please choose another floor.")
 
-def north_tunnel():
-    print_pause("")
+def growing_room(items: list):
+    print_pause("You have made it to the growing room.")
+    print_pause("You make your way out of the growing room.")
+    pick_room(items)
 
-def east_tunnel():
-    print_pause("")
+def processing_room(items: list):
+    print_pause("You have made it to the processing room.")
+    print_pause("You make your way out of the processing room.")
+    pick_room(items)
 
-def south_tunnel():
-    print_pause("")
+def machine_room(items: list):
+    print_pause("You have made it to the machine room.")
+    print_pause("You make your way out of the machine room.")
+    pick_room(items)
 
-def west_tunnel():
-    print_pause("")
+def tool_room(items: list):
+    print_pause("You have made it to the tool room.")
+    print_pause("You make your way out of the tool room.")
+    pick_room(items)
 
-def first_day():
-    print_pause("Finally, your first day at your new job can begin.")
-    print_pause("After")
-    print_pause("")
-    tunnel_choice = input("").lower()
-    if tunnel_choice == "north":
-        north_tunnel()
-    if tunnel_choice == "east":
-        east_tunnel()
-    if tunnel_choice == "south":
-        south_tunnel()
-    if tunnel_choice == "west":
-        west_tunnel()
+def pick_room(items: list):
+    print_pause("You remember the map, circuits computing your options...")
+    print_pause("1. Growing Room")
+    print_pause("2. Processing Room")
+    print_pause("3. Machine Room")
+    print_pause("4. Tool Room")
+    room_choice = input("Please enter a number from 1-4, or ??? if unsure:")
+    # if room_choice == "???":
+    #     room_choice = random.randint(4)
+    elif room_choice == "1":
+        growing_room(items)
+    elif room_choice == "2":
+        machine_room(items)
+    elif room_choice == "3":
+        processing_room(items)
+    elif room_choice == "4":
+        tool_room(items)
 
-
-def keep_going():
+def part_two(items: list):
     choice = input("would you like to continue playing? (y/n):\n")
     if choice == "y":
-        print("")
-        first_day()
+        print_pause("Finally, your first day at your new job can begin.")
+        print_pause("You make your way out of the front staging area into a long hallway.")
+        print_pause("There is a map on this wall.")
+        print_pause("You study the map, your circuitry memorizing the options.")
+        print_pause("You turn to continue down the hallway.")
+        pick_room(items)
+    elif choice == "n":
+        print_pause("Program terminated.")
+        exit()
 
 def play_game():
     items = []
     intro()
     ride_elevator(items)
+    part_two(items)
 
 play_game()

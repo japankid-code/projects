@@ -89,10 +89,14 @@ def growing_room(items: list):
 def generator_room(items: list):
     print_pause("You make your way to the generator room.")
     print_pause("Inside you connect with the central generator monitoring system (CGMS).")
-    room_choice = input("Please select a room:")
-    power_level = input("Please select a power level:")
-    for room_power in range(10):
-        if rp ==
+    room_choice = input("Please select a room to adjust power:\n"
+                        "1. Growing Room.\n"
+                        "2. Machine Room.\n")
+    power_level = input("Please select a power level 1-10:")
+    for p in range(10):
+        if power_level == p:
+            
+
 
     # power levels for the growing room and machine room can be set here.
     print_pause("You make your way out of the generator room.")

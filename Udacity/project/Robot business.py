@@ -92,11 +92,9 @@ def generator_room(items: list):
     room_choice = input("Please select a room to adjust power:\n"
                         "1. Growing Room.\n"
                         "2. Machine Room.\n")
-    power_level = input("Please select a power level 1-10:")
-    for p in range(10):
-        if power_level == p:
-            
-
+    print_pause("The power level input protocol has malfunctioned.")
+    print_pause("As a result, an unknown power level from 1-10 will be set in both rooms")
+    power_level = ranom.randint(1, 10)
 
     # power levels for the growing room and machine room can be set here.
     print_pause("You make your way out of the generator room.")
@@ -105,23 +103,50 @@ def generator_room(items: list):
 def machine_room(items: list):
     print_pause("You have made it to the machine room.")
     #some upgrades will happen in this room, power coupler can be installed.
-    if "medal" in items:
+    # if "medal" in items:
         # you turn the medal in for the power coupler.
     print_pause("You make your way out of the machine room.")
     pick_room(items)
 
 def tool_room(items: list):
     print_pause("You have made it to the tool room.")
+    print_pause("There is a large vending machine with all kinds of upgrades.")
+    print_pause("""
+ ___________________
+|  |+==============+|   
+|  ||              ||
+|  || 1 wrench     ||
+|  || 2 power fist ||
+|  || 3 squirter   ||
+|  ||              ||
+|  || |==========| ||
+|  |+=|==========|=+|
+|__|----------------| 
+   """)
+    if "assistant" in items:
+        print_pause("Your assistant status entitles you to some credit toward an item.")
+        print_pause("You are able to choose one upgrade, here are your options:")
+        print_pause("1. Wrench attachment\n"
+                    "2. Power bands for robot workouts\n" 
+                    "3. Squirt gun\n")
+        first_upgrade = input("Please choose an upgrade:\n")
+        if first_upgrade == "1":
+            items.append("wrench")
+        if first_upgrade == "2":
+            items.append("power")
+        if first_upgrade == "3":
+            items.append("squirt_gun")
+    print(items)
     print_pause("You make your way out of the tool room.")
     pick_room(items)
 
 def pick_room(items: list):
-    print_pause("You remember the map, circuits computing your options...")
+    print_pause("Your memory loads the map, circuits compute your options...")
     print_pause("1. Growing Room")
     print_pause("2. Generator Room")
     print_pause("3. Machine Room")
     print_pause("4. Tool Room")
-    room_choice = input("Please enter a number from 1-4, or ??? if unsure:")
+    room_choice = input("Please enter a number from 1-4, or ??? if unsure:\n")
     while room_choice == "???":
         room_choice = random.randint(1, 4)
     if room_choice == "1":

@@ -12,6 +12,10 @@ def print_pause(string):
     time.sleep(0.35)
     print(string)    
 
+def dotdotdot(n):
+    for wait in range(n):
+        print_pause("...")
+
 def intro():
     print_pause("Humanity as it was once has ceased to exist.")
     print_pause("You are a robot and have just arrived to start your new assignment at the human generator plant.")
@@ -78,25 +82,28 @@ def ride_elevator(items: list):
         third_floor(items)
     print_pause("You know what you need to do. Please choose another floor.")
 
-def growing_room(items: list):
-    print_pause("You have made it to the growing room.")
-    print_pause("This is where the humans are grown for use in energy production.")
-
-    print_pause("You make your way out of the growing room.")
+def science_room(items: list):
+    print_pause("You have made it to the science room.")
+    print_pause("This is where research is done to see how humans can benefit robots.")
+    print_pause("Unfortunately, you have not proven yourself.")
+    print_pause("You will have to come back later.")
+    dotdotdot(3)
+    print_pause("You make your way out of the science room.")
     pick_room(items)
 
 def generator_room(items: list):
     print_pause("You make your way to the generator room.")
     print_pause("Inside you connect with the central generator monitoring system (CGMS).")
     print_pause("Please select a room to adjust power:\n"
-                "1. Growing Room.\n"
+                "1. science Room.\n"
                 "2. Machine Room.")
-    print_pause("ERROR 42 - UNABLE TO LOAD PROTOCOL")
+    print_pause("===ERROR 42 - UNABLE TO LOAD PROTOCOL===")
     print_pause("The power level input protocol has malfunctioned.")
     print_pause("As a result, a power level from 1-10 will be set in both rooms")
     power_level = random.randint(1, 10)
-    print_pause("Power level has been set to: " power_level)
-    # power levels for the growing room and machine room can be set here.
+    print_pause("Power level has been set to: ")
+    print_pause(power_level)
+    # power levels for the science room and machine room can be set here.
     print_pause("You make your way out of the generator room.")
     pick_room(items)
 
@@ -121,14 +128,14 @@ def tool_room(items: list):
 |  || 3 squirter   ||
 |  |+==============+|
 |  || |==========| ||
-|  ||=|==========|=||
+|  || |==========| ||
 |__|----------------| 
    """)
     if "assistant" in items:
         print_pause("Your assistant status entitles you to some credit toward an item.")
         print_pause("You are able to choose one upgrade, here are your options:")
         print_pause("1. Wrench attachment, quite handy\n"
-                    "2. Power bands, for robot workouts\n" 
+                    "2. Power adapter, for robot stuff\n" 
                     "3. Squirt gun, all kinds of uses")
         first_upgrade = input("Please choose an upgrade:\n")
         if first_upgrade == "1":
@@ -144,7 +151,7 @@ def tool_room(items: list):
 def pick_room(items: list):
     def room_chooser(items: list):
         if room_choice == "1":
-            growing_room(items)
+            science_room(items)
         elif room_choice == "2":
             generator_room(items)
         elif room_choice == "3":
@@ -154,7 +161,7 @@ def pick_room(items: list):
         else:
             print_pause("INVALID INPUT PLEASE TRY AGAIN")
     print_pause("Your memory loads the map, circuits compute your options...")
-    print_pause("1. Growing Room")
+    print_pause("1. Science Room")
     print_pause("2. Generator Room")
     print_pause("3. Machine Room")
     print_pause("4. Tool Room")
@@ -184,4 +191,8 @@ def play_game():
     ride_elevator(items)
     part_two(items)
 
-play_game()
+def shortcut():
+    items = ["handbook", "ID chip", ""]
+    part_two(items)
+
+shortcut()

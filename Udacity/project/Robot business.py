@@ -9,8 +9,12 @@ import time
 import random
 
 def print_pause(string):
-    time.sleep(0.05)
+    time.sleep(0.35)
     print(string)    
+
+def dotdotdot(n):
+    for wait in range(n):
+        print_pause("...")
 
 def intro():
     print_pause("Humanity as it was once has ceased to exist.")
@@ -23,7 +27,7 @@ def intro():
 
 def first_floor(items: list):
     print_pause("The door closes and then opens. Your circuitry computes...")
-    time.sleep(random.randrange(4))
+    time.sleep(random.randrange(8))
     print_pause("You are now in the lobby.\n...")
     if "ID card" in items:
         print_pause("The clerk greets you, but she has already given you your \n"
@@ -50,10 +54,9 @@ def second_floor(items: list):
 
 def third_floor(items: list):
     print_pause("After a few moments, you find yourself in the Engineering department.")
-    print_pause("Ahead, there is a door. It is locked and you must use your ID chip to get through")
+    print_pause("Ahead, there is a door. It is locked and you must use your ID chip to get through.")
     if "ID card" in items:
-        print_pause("You scan your ID chip to get through the door.")
-        print_pause("You make your way through to the front staging area.")
+        print_pause("You scan your ID chip and make your way through the door.")
         print_pause("Your program manager greets you, beginning to scan your circuitry.\n"
                     "He explains that you need to have a copy of the employee\n"
                     "handbook in order to start work.")
@@ -79,59 +82,95 @@ def ride_elevator(items: list):
         third_floor(items)
     print_pause("You know what you need to do. Please choose another floor.")
 
-def growing_room(items: list):
-    print_pause("You have made it to the growing room.")
-    print_pause("This is where the humans are grown for use in energy production.")
-
-    print_pause("You make your way out of the growing room.")
+def science_room(items: list):
+    print_pause("You have made it to the science room.")
+    print_pause("This is where research is done to see how humans can benefit robots.")
+    print_pause("Unfortunately, you have not proven yourself.")
+    print_pause("You will have to come back later.")
+    dotdotdot(3)
+    print_pause("You make your way out of the science room.")
     pick_room(items)
 
 def generator_room(items: list):
     print_pause("You make your way to the generator room.")
     print_pause("Inside you connect with the central generator monitoring system (CGMS).")
-    room_choice = input("Please select a room to adjust power:\n"
-                        "1. Growing Room.\n"
-                        "2. Machine Room.\n")
-    power_level = input("Please select a power level 1-10:")
-    for p in range(10):
-        if power_level == p:
-            
-
-
-    # power levels for the growing room and machine room can be set here.
+    print_pause("Please select a room to adjust power:\n"
+                "1. science Room.\n"
+                "2. Machine Room.")
+    print_pause("===ERROR 42 - UNABLE TO LOAD PROTOCOL===")
+    print_pause("The power level input protocol has malfunctioned.")
+    print_pause("As a result, a power level from 1-10 will be set in both rooms")
+    power_level = random.randint(1, 10)
+    print_pause("Power level has been set to: ")
+    print_pause(power_level)
+    # power levels for the science room and machine room can be set here.
     print_pause("You make your way out of the generator room.")
     pick_room(items)
 
 def machine_room(items: list):
     print_pause("You have made it to the machine room.")
-    #some upgrades will happen in this room, power coupler can be installed.
-    if "medal" in items:
-        # you turn the medal in for the power coupler.
+    print_pause("4")
+    # you will need the power bands to be able to fix the problem in this room
+    if "power" in items:
+         print_pause("Your power")
     print_pause("You make your way out of the machine room.")
     pick_room(items)
 
 def tool_room(items: list):
     print_pause("You have made it to the tool room.")
+    print_pause("There is a large vending machine with all kinds of upgrades.")
+    print_pause("""
+ ___________________
+|  |+==============+|   
+|  ||              ||
+|  || 1 wrench     ||
+|  || 2 power fist ||
+|  || 3 squirter   ||
+|  |+==============+|
+|  || |==========| ||
+|  || |==========| ||
+|__|----------------| 
+   """)
+    if "assistant" in items:
+        print_pause("Your assistant status entitles you to some credit toward an item.")
+        print_pause("You are able to choose one upgrade, here are your options:")
+        print_pause("1. Wrench attachment, quite handy\n"
+                    "2. Power adapter, for robot stuff\n" 
+                    "3. Squirt gun, all kinds of uses")
+        first_upgrade = input("Please choose an upgrade:\n")
+        if first_upgrade == "1":
+            items.append("wrench")
+        if first_upgrade == "2":
+            items.append("power")
+        if first_upgrade == "3":
+            items.append("squirt_gun")
+    print(items)
     print_pause("You make your way out of the tool room.")
     pick_room(items)
 
 def pick_room(items: list):
-    print_pause("You remember the map, circuits computing your options...")
-    print_pause("1. Growing Room")
+    def room_chooser(items: list):
+        if room_choice == "1":
+            science_room(items)
+        elif room_choice == "2":
+            generator_room(items)
+        elif room_choice == "3":
+            machine_room(items)
+        elif room_choice == "4":
+            tool_room(items)
+        else:
+            print_pause("INVALID INPUT PLEASE TRY AGAIN")
+    print_pause("Your memory loads the map, circuits compute your options...")
+    print_pause("1. Science Room")
     print_pause("2. Generator Room")
     print_pause("3. Machine Room")
     print_pause("4. Tool Room")
-    room_choice = input("Please enter a number from 1-4, or ??? if unsure:")
+    room_choice = input("Please enter a number from 1-4, or ??? if unsure:\n")
     while room_choice == "???":
         room_choice = random.randint(1, 4)
-    if room_choice == "1":
-        growing_room(items)
-    elif room_choice == "2":
-        machine_room(items)
-    elif room_choice == "3":
-        generator_room(items)
-    elif room_choice == "4":
-        tool_room(items)
+        room_chooser(items)
+    room_chooser(items)
+        
 
 def part_two(items: list):
     choice = input("would you like to continue playing? (y/n):\n")
@@ -152,4 +191,8 @@ def play_game():
     ride_elevator(items)
     part_two(items)
 
-play_game()
+def shortcut():
+    items = ["handbook", "ID chip", ""]
+    part_two(items)
+
+shortcut()

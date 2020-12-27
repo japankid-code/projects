@@ -105,12 +105,12 @@ def generator_room(items: list):
     print_pause(power_level)
     # power levels for the science room and machine room can be set here.
     print_pause("You make your way out of the generator room.")
+    power_level
     pick_room(items)
-    return power_level
 
 def machine_room(items: list):
     print_pause("You have made it to the machine room.")
-    print_pause("4")
+    dotdotdot(3)
     # you will need the power bands to be able to fix the problem in this room
     if "power" in items:
          print_pause("Your power")
@@ -120,31 +120,47 @@ def machine_room(items: list):
 def tool_room(items: list):
     print_pause("You have made it to the tool room.")
     print_pause("There is a large vending machine with all kinds of upgrades.")
-    print_pause("""  ___________________
-                    |  |+==============+|   
-                    |  ||              ||
-                    |oo||    power     ||
-                    |oo||   shortage   ||
-                    |oo||              ||
-                    |oo|+==============+|
-                    |  || |==========| ||
-                    |  || |==========| ||
-                    |--|----------------| """)
-    print_pause("Unfortunately, it seems the machine is out of order")
-    print_pause("In order to function, power must be increased to the")
-    if "assistant" in items:
-        print_pause("Your assistant status entitles you to some credit toward an item.")
-        print_pause("You are able to choose one upgrade, here are your options:")
-        print_pause("1. Wrench attachment, quite handy\n"
-                    "2. Power adapter, for robot stuff\n" 
-                    "3. Squirt gun, all kinds of uses")
-        first_upgrade = input("Please choose an upgrade:\n")
-        if first_upgrade == "1":
-            items.append("wrench")
-        if first_upgrade == "2":
-            items.append("power")
-        if first_upgrade == "3":
-            items.append("squirt_gun")
+    if power_level <= 6:
+        print_pause("Unfortunately, it seems the machine is out of order")
+        print_pause("In order to function, power level must be increased.")
+        print_pause("""
+                         ___________________
+                        |  |+==============+|   
+                        |  ||              ||
+                        |oo||    power     ||
+                        |oo||   shortage   ||
+                        |oo||              ||
+                        |oo|+==============+|
+                        |  || |==========| ||
+                        |  || |==========| ||
+                        |--|----------------| """)
+    elif power_level >= 7 and power_level <= 10:
+        if "assistant" in items:
+            print_pause('''
+ ___________________
+|  |+==============+|   
+|  ||              ||
+|  || 1 wrench     ||
+|  || 2 power fist ||
+|  || 3 squirter   ||
+|  |+==============+|
+|  || |==========| ||
+|  || |==========| ||
+|__|----------------| ''')
+            print_pause("Your assistant status entitles you to some credit toward an item.")
+            print_pause("You are able to choose one upgrade, here are your options:")
+            print_pause("1. Wrench attachment, quite handy\n"
+                        "2. Power adapter, for robot stuff\n" 
+                        "3. Squirt gun, all kinds of uses")
+            first_upgrade = input("Please choose an upgrade:\n")
+            if first_upgrade == "1":
+                items.append("wrench")
+            if first_upgrade == "2":
+                items.append("power")
+            if first_upgrade == "3":
+                items.append("squirt_gun")
+        
+    
     print(items)
     print_pause("You make your way out of the tool room.")
     pick_room(items)
@@ -185,6 +201,8 @@ def part_two(items: list):
     elif choice == "n":
         print_pause("Program terminated.")
         exit()
+    else:
+        print_pause("I did not understand, please re-enter response:\n")
 
 def play_game():
     items = []
@@ -193,7 +211,9 @@ def play_game():
     part_two(items)
 
 def shortcut():
-    items = ["handbook", "ID chip", ""]
+    global power_level
+    power_level = 0
+    items = ["handbook", "ID chip", "assistant"]
     part_two(items)
 
 shortcut()

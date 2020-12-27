@@ -93,9 +93,9 @@ def science_room(items: list):
 
 def generator_room(items: list):
     print_pause("You make your way to the generator room.")
-    print_pause("Inside you connect with the central generator monitoring system (CGMS).")
+    print_pause("Inside you connect with the central generator monitoring system (GMS).")
     print_pause("Please select a room to adjust power:\n"
-                "1. science Room.\n"
+                "1. Science Room.\n"
                 "2. Machine Room.")
     print_pause("===ERROR 42 - UNABLE TO LOAD PROTOCOL===")
     print_pause("The power level input protocol has malfunctioned.")
@@ -106,6 +106,7 @@ def generator_room(items: list):
     # power levels for the science room and machine room can be set here.
     print_pause("You make your way out of the generator room.")
     pick_room(items)
+    return power_level
 
 def machine_room(items: list):
     print_pause("You have made it to the machine room.")
@@ -119,18 +120,18 @@ def machine_room(items: list):
 def tool_room(items: list):
     print_pause("You have made it to the tool room.")
     print_pause("There is a large vending machine with all kinds of upgrades.")
-    print_pause("""
- ___________________
-|  |+==============+|   
-|  ||              ||
-|  || 1 wrench     ||
-|  || 2 power fist ||
-|  || 3 squirter   ||
-|  |+==============+|
-|  || |==========| ||
-|  || |==========| ||
-|__|----------------| 
-   """)
+    print_pause("""  ___________________
+                    |  |+==============+|   
+                    |  ||              ||
+                    |oo||    power     ||
+                    |oo||   shortage   ||
+                    |oo||              ||
+                    |oo|+==============+|
+                    |  || |==========| ||
+                    |  || |==========| ||
+                    |--|----------------| """)
+    print_pause("Unfortunately, it seems the machine is out of order")
+    print_pause("In order to function, power must be increased to the")
     if "assistant" in items:
         print_pause("Your assistant status entitles you to some credit toward an item.")
         print_pause("You are able to choose one upgrade, here are your options:")

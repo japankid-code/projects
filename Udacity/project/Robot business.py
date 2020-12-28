@@ -174,7 +174,7 @@ def tool_room(items: list):
     ''')
         print_pause("You interface with the machine and realize it is trying to tell you something...")
         print_pause("The little guy would like to thank you for turning the power back on!")
-        print_pause("You are granted one free upgrade! here are your options:")
+        print_pause("You are granted one free upgrade! Here are your options:")
         print_pause("1. Wrench attachment, quite handy.\n"
                     "2. Power adapter, for robot stuff.\n" 
                     "3. Squirt gun, all kinds of uses.")
@@ -182,26 +182,6 @@ def tool_room(items: list):
         if assistant in items:
             print_pause("Your assistant status entitles you to some credit toward an item as well.")
             upgrades(second)
-        
-        # first_upgrade = input("Please choose an upgrade:\n")
-        # if first_upgrade == "1":
-        #     items.append("wrench")
-        # if first_upgrade == "2":
-        #     items.append("power")
-        # if first_upgrade == "3":
-        #     items.append("squirt_gun")
-        # if "assistant" in items:
-        #     print_pause("Your assistant status entitles you to some credit toward an item.")
-        #     second_upgrade = input("Please choose an upgrade:\n")
-        #     if first_upgrade == "1":
-        #         items.append("wrench")
-        #     if first_upgrade == "2":
-        #         items.append("power")
-        #     if first_upgrade == "3":
-        #         items.append("squirt_gun")
-        #     if "administrator" in items:
-        #         second_upgrade = 
-            
     print(items)
     print_pause("You make your way out of the tool room.")
     pick_room(items)

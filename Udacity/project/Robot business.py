@@ -242,20 +242,20 @@ def pick_room(items: list):
     room_chooser(items)   
 
 def part_two(items: list):
-    # choice = input("would you like to continue playing? (y/n):\n")
-    # if choice == "y":
+    choice = input("would you like to continue playing? (y/n):\n")
+    if choice == "y":
         print_pause("Finally, your first day at your new job can begin.")
         print_pause("You make your way out of the front recieving area into a long hallway.")
         print_pause("In the dimly lit corridor, your circuitry detects there is a map on the wall.")
         print_pause("Sensors study the map, memorizing the options.")
         print_pause("Turning, you continue down the hallway.")
         pick_room(items)
-    # elif choice == "n":
-    #     print_pause("Program terminated.")
-    #     exit()
-    # else:
-    #     print_pause("I did not understand, please re-enter response:\n")
-    #     part_two(items)
+    elif choice == "n":
+        print_pause("Program terminated.")
+        exit()
+    else:
+        print_pause("I did not understand, please re-enter response:\n")
+        part_two(items)
 
 def play_game():
     global power_level
@@ -271,4 +271,5 @@ def shortcut():
     items = ["handbook", "ID chip", "assistant"]
     part_two(items)
 
-shortcut()
+# shortcut()
+play_game()

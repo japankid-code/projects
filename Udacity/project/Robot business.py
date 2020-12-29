@@ -1,20 +1,22 @@
 # this is a refactor of elevator2.py
 # various pieces of code were moved into functions instead of while loops.
 # This started from Udacity coursework,
-# items list moved into a function definition, 
+# items list moved into a function definition,
 # this means the list has to be called as a parameter in earlier function defs.
-# 
 
 import time
 import random
 
+
 def print_pause(string):
     time.sleep(0.35)
-    print(string)    
+    print(string)
+
 
 def dotdotdot(n):
     for wait in range(n):
         print_pause("...")
+
 
 def upgrades(n):
     n = int(input("Please choose an upgrade:\n"))
@@ -27,17 +29,22 @@ def upgrades(n):
         items.append("squirt_gun")
         print_pause("Squirt gun acquired!")
 
-def power_range(a, b):
+
+def power_range(a: int, b: int):
     power_level >= a and power_level <= b
+
 
 def intro():
     print_pause("Humanity as it was once has ceased to exist.")
-    print_pause("You are a robot and have just arrived to start your new assignment at the human generator plant.")
-    print_pause("You make your way directly to the elevator and find several buttons.")
+    print_pause("You are a robot and have just arrived to start your "
+    "new assignment at the human generator plant.")
+    print_pause("You make your way directly to the "
+    "elevator and find several buttons.")
     print_pause("Here are your options:")
     print_pause("1. Lobby")
     print_pause("2. Robot Resources")
     print_pause("3. Engineering")
+
 
 def first_floor(items: list):
     print_pause("The door closes and then opens. Your circuitry computes...")
@@ -51,6 +58,7 @@ def first_floor(items: list):
         items.append("ID card")
     ride_elevator(items)
 
+
 def second_floor(items: list):
     print_pause("After a moment, you find yourself in the Robot Resources department.")
     print_pause("The Administrator of the floor greets you.")
@@ -62,9 +70,10 @@ def second_floor(items: list):
                     "give it to you until you go get your ID chip.")
         if "ID card" in items:
             print_pause("She looks at your ID chip.\n"
-                        "She hands you a datachip containing the employee handbook.")
+            "She hands you a datachip containing the employee handbook.")
             items.append("handbook")
     ride_elevator(items)
+
 
 def third_floor(items: list):
     print_pause("After a few moments, you find yourself in the Engineering department.")
@@ -86,6 +95,7 @@ def third_floor(items: list):
         print_pause("You head back to the elevator.")
     ride_elevator(items)
 
+
 def ride_elevator(items: list):
     floor = input("Please enter the number for the floor you would like to visit:\n")
     if floor == "1":
@@ -95,6 +105,7 @@ def ride_elevator(items: list):
     elif floor == "3":
         third_floor(items)
     print_pause("You know what you need to do. Please choose another floor.")
+
 
 def science_room(items: list):
     print_pause("You have made it to the science room.")
@@ -117,12 +128,13 @@ def science_room(items: list):
     dotdotdot(1)
     pick_room(items)
 
+
 def generator_room(items: list):
     def change_power():
         power_level = random.randint(1, 10)
         print_pause("Power level has been set to:")
         print_pause(power_level)
-        if power_range(7,10):
+        if power_level >= 7:
             print_pause(f"Having set the power level to {power_level}, you make your way out of the generator room.")
         else:
             print_pause(f"Power level has been set to {power_level}.")
@@ -134,6 +146,7 @@ def generator_room(items: list):
             elif reset == "n":
                 print_pause("Have it your way.")
                 dotdotdot(3)
+        dotdotdot(1)
         pick_room(items)
 
     def intro():
@@ -149,6 +162,7 @@ def generator_room(items: list):
     
     intro()
     change_power()
+
 
 def machine_room(items: list):
     print_pause("You have made it to the machine room.")
@@ -166,6 +180,7 @@ def machine_room(items: list):
     print_pause("You make your way out of the machine room.")
     dotdotdot(1)
     pick_room(items)
+
 
 def tool_room(items: list):
     print_pause("You have made it to the tool room.")
@@ -218,6 +233,7 @@ def tool_room(items: list):
     dotdotdot(3)
     pick_room(items)
 
+
 def pick_room(items: list):
     def room_chooser(items: list):
         if room_choice == "1":
@@ -241,6 +257,7 @@ def pick_room(items: list):
         room_chooser(items)
     room_chooser(items)   
 
+
 def part_two(items: list):
     choice = input("would you like to continue playing? (y/n):\n")
     if choice == "y":
@@ -257,6 +274,7 @@ def part_two(items: list):
         print_pause("I did not understand, please re-enter response:\n")
         part_two(items)
 
+
 def play_game():
     global power_level
     power_level = 0
@@ -264,6 +282,7 @@ def play_game():
     intro()
     ride_elevator(items)
     part_two(items)
+
 
 def shortcut():
     global power_level

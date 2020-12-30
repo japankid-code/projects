@@ -56,7 +56,8 @@ def first_floor(items: list):
 
 
 def second_floor(items: list):
-    print_pause("After a moment, you find yourself in the Robot Resources department.")
+    print_pause("After a moment, you find yourself in the "
+                "Robot Resources department.")
     print_pause("The Administrator of the floor greets you.")
     if "handbook" in items:
         print_pause("But she has already given you your handbook.")
@@ -79,13 +80,16 @@ def third_floor(items: list):
     print_pause("Ahead, there is a door. It is locked and you must "
                 "use your ID chip to get through.")
     if "ID card" in items:
-        print_pause("You scan your ID chip and make your way through the door.")
+        print_pause("You scan your ID chip and make your"
+                    " way through the door.")
         print_pause("Your program manager greets you, "
                     "beginning to scan your circuitry.\n"
-                    "He explains that you need to have a copy of the employee\n"
+                    "He explains that you need to have "
+                    "a copy of the employee\n"
                     "handbook in order to start work.")
         if "handbook" in items:
-            print_pause("Fortunately, you recieved this from the Robot Resources department!")
+            print_pause("Fortunately, you recieved this from"
+                        " the Robot Resources department!")
             print_pause("Congration! You are ready to start your new job as")
             print_pause("the assistant to the vice president of Engineering!")
             items.append("assistant")
@@ -119,7 +123,7 @@ def science_room(items: list):
     # need the power bands to be able to fix the problem in this room
     if "power" not in items:
         print_pause("You would think a facility with a science room would be"
-        " kept in top shape.")
+                    " kept in top shape.")
         print_pause("But not this one.")
         print_pause("You make your way out of the science room.")
     elif "power" in items:
@@ -130,10 +134,10 @@ def science_room(items: list):
             print_pause("You flip the switch next to the hatch.")
             print_pause("Nothing happens.")
             print_pause("It seems that the power is out "
-                         "and you will have to investigate.")
+                        "and you will have to investigate.")
         elif power_level >= 7:  # power on
             print_pause("Walking through the rusted door, you realize"
-            " why it had been shut.")
+                        " why it had been shut.")
             print_pause("Wonderful, you have beaten the game.")
             exit()
     dotdotdot(1)
@@ -147,10 +151,11 @@ def generator_room(items: list):
         print_pause(power_level)
         if power_level >= 7:
             print_pause(f"Having set the power level to {power_level},"
-                         " you make your way out of the generator room.")
+                        " you make your way out of the generator room.")
         else:
             print_pause(f"Power level has been set to {power_level}.")
-            reset = input("This may be too low, retry setting power level? (y/n)\n")
+            reset = input("This may be too low, "
+                          "retry setting power level? (y/n)\n")
             if reset == "y":
                 dotdotdot(1)
                 change_power()
@@ -162,7 +167,8 @@ def generator_room(items: list):
 
     def intro():
         print_pause("You make your way to the generator room.")
-        print_pause("Inside you connect to the central power monitoring system.")
+        print_pause("Inside you connect to the central power "
+                    "monitoring system.")
         print_pause("Please select a room to adjust power:")
         print_pause("=== ERROR 42 - UNABLE TO LOAD PROTOCOL ===")
         print_pause("======= FATAL ERROR - SYSTEM EXIT ========")
@@ -170,22 +176,22 @@ def generator_room(items: list):
         print_pause("Both rooms will have their power level set from 1-10.")
         change_power()
         dotdotdot(1)
-    
     intro()
     change_power()
 
 
 def machine_room(items: list):
     print_pause("You have made it to the machine room.")
-    print_pause("Sensors alarm you to smoke coming from the corner of the room")
+    print_pause("Sensors alarm you to smoke coming from "
+                "the corner of the room")
     # this room is a trap, if you dont have
     # the squirt gun when u enter, you lose the game.
-    # you will need the squirt gun to put out the fire 
+    # you will need the squirt gun to put out the fire
     # in this room after turning the power on.
     if "squirt_gun" in items:
         print_pause("Your squirt gun upgrade extinguishes the fire!!")
     else:
-        print_pause("Nothing you have is able to stop the spread of the fire.")
+        print_pause("Nothing is able to stop the spread of the fire.")
         print_pause("From the sidewalk after you have made your exit...")
         print_pause("You watch as the entire facility burns down.")
         print_pause("You have done humanity a great deed.")
@@ -199,10 +205,12 @@ def tool_room(items: list):
     first = 0
     second = 0
     print_pause("You have made it to the tool room.")
-    print_pause("There is a large vending machine with all kinds of upgrades.")
+    print_pause("There is a large vending machine with"
+                " all kinds of upgrades.")
     if power_level <= 6:  # power off.
         print_pause("Unfortunately, it seems the machine is out of order")
-        print_pause("A small, dim, flashing screen shows low energy levels for the device.")
+        print_pause("A small, dim, flashing screen shows "
+                    "low energy levels for the device.")
         print_pause("In order to function, power level must be increased.")
         print_pause("""
      ___________________
@@ -217,8 +225,10 @@ def tool_room(items: list):
     |  || |==========| ||
     |--|----------------|
     """)
-        print_pause("A power outage is a strange occurrence in your field of work.")
-        print_pause("In order to fix the problem, you will have to do some investigating.")
+        print_pause("A power outage is a strange occurrence "
+                    "in your field of work.")
+        print_pause("In order to fix the problem, you will "
+                    "have to do some investigating.")
     elif power_level >= 7:  # power on.
         print_pause('''
      ___________________
@@ -233,15 +243,18 @@ def tool_room(items: list):
     |  || |==========| ||
     |__|----------------|
     ''')
-        print_pause("You interface with the machine and realize it is trying to tell you something...")
-        print_pause("The little guy would like to thank you for turning the power back on!")
+        print_pause("You interface with the machine and realize "
+                    "it is trying to tell you something...")
+        print_pause("The little guy would like to thank you for "
+                    "turning the power back on!")
         print_pause("You are granted one free upgrade! Here are your options:")
         print_pause("1. Wrench attachment, quite handy.\n"
-                    "2. Power adapter, for robot stuff.\n" 
+                    "2. Power adapter, for robot stuff.\n"
                     "3. Squirt gun, all kinds of uses.")
         upgrades(first)
         if "assistant" in items:
-            print_pause("Additionally, your assistant status earns you credit toward another item.")
+            print_pause("Additionally, your assistant status earns"
+                        " you credit toward another item.")
             upgrades(second)
             print_pause("You are satisfied with all your upgrades.")
     print_pause("You make your way out of the tool room.")
@@ -250,14 +263,14 @@ def tool_room(items: list):
 
 
 def pick_room(items: list):
-    room_choice = 0
     print_pause("Your memory loads the map, circuits compute your options...")
     print_pause("1. Science Room")
     print_pause("2. Generator Room")
     print_pause("3. Machine Room")
     print_pause("4. Tool Room")
     room_choice = input("Please enter a number from 1-4, or ??? if unsure:\n")
-    def room_chooser(items: list, room_choice):
+
+    def room_chooser(room_choice, items: list):
         if room_choice == "1":
             science_room(items)
         elif room_choice == "2":
@@ -279,8 +292,10 @@ def part_two(items: list):
     choice = input("Would you like to continue playing? (y/n):\n")
     if choice == "y":
         print_pause("Finally, your first day at your new job can begin.")
-        print_pause("You make your way out of the front recieving area into a long hallway.")
-        print_pause("In the dimly lit corridor, your sensors detect there is a map on the wall.")
+        print_pause("You make your way out of the front "
+                    "recieving area into a long hallway.")
+        print_pause("In the dimly lit corridor, your sensors detect "
+                    "there is a map on the wall.")
         print_pause("Studying the map, you memorize your options.")
         print_pause("Turning, you continue down the hallway.")
         pick_room(items)
@@ -307,6 +322,6 @@ def shortcut():
     items = ["handbook", "ID chip", "assistant"]
     part_two(items)
 
+
 # shortcut()
 play_game()
-

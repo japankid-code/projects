@@ -33,9 +33,9 @@ def upgrades(n, items: list):
 def intro():
     print_pause("Humanity as it was once has ceased to exist.")
     print_pause("You are a robot and have just arrived to start your "
-    "new assignment at the human generator plant.")
+                "new assignment at the human generator plant.")
     print_pause("You make your way directly to the "
-    "elevator and find several buttons.")
+                "elevator and find several buttons.")
     print_pause("Here are your options:")
     print_pause("1. Lobby")
     print_pause("2. Robot Resources")
@@ -47,8 +47,8 @@ def first_floor(items: list):
     time.sleep(random.randrange(5))
     print_pause("You are now in the lobby.\n...")
     if "ID card" in items:
-        print_pause("The clerk greets you, but she has already given you your \n"
-                    "ID chip, so there is nothing more to do here now.")
+        print_pause("The clerk greets you, but she has already given you \n"
+                    "your ID chip, so there is nothing more to do here now.")
     if "ID card" not in items:
         print_pause("The clerk greets you and gives you your ID chip.")
         items.append("ID card")
@@ -62,11 +62,13 @@ def second_floor(items: list):
         print_pause("But she has already given you your handbook.")
     else:
         if "ID card" not in items:
-            print_pause("The administrator has something for you, but says she can't\n"
-                    "give it to you until you go get your ID chip.")
+            print_pause("The administrator has "
+                        "something for you, but says she can't\n"
+                        "give it to you until you gather your ID chip.")
         if "ID card" in items:
             print_pause("She looks at your ID chip.\n"
-            "She hands you a datachip containing the employee handbook.")
+                        "She hands you a datachip containing "
+                        "the employee handbook.")
             items.append("handbook")
     ride_elevator(items)
 
@@ -78,7 +80,8 @@ def third_floor(items: list):
                 "use your ID chip to get through.")
     if "ID card" in items:
         print_pause("You scan your ID chip and make your way through the door.")
-        print_pause("Your program manager greets you, beginning to scan your circuitry.\n"
+        print_pause("Your program manager greets you, "
+                    "beginning to scan your circuitry.\n"
                     "He explains that you need to have a copy of the employee\n"
                     "handbook in order to start work.")
         if "handbook" in items:
@@ -89,13 +92,15 @@ def third_floor(items: list):
             part_two(items)
     else:
         print_pause("Unfortunately, the door is locked and you can't get in. ")
-        print_pause("It looks like you need some kind of key card to open the door. ")
+        print_pause("It looks like you need some kind of "
+                    "key card to open the door.")
         print_pause("You head back to the elevator.")
     ride_elevator(items)
 
 
 def ride_elevator(items: list):
-    floor = input("Please enter the number for the floor you would like to visit:\n")
+    floor = input("Please enter the number for the "
+                  "floor you would like to visit:\n")
     if floor == "1":
         first_floor(items)
     elif floor == "2":
@@ -118,12 +123,14 @@ def science_room(items: list):
         print_pause("But not this one.")
         print_pause("You make your way out of the science room.")
     elif "power" in items:
-        print_pause("Your power upgrade allows you to force open the rusted hatch")
+        print_pause("Your power upgrade allows you "
+                    "to force open the rusted hatch")
         if power_level <= 6:  # power off
             print_pause("Someone forgot to turn on the lights this morning.")
             print_pause("You flip the switch next to the hatch.")
             print_pause("Nothing happens.")
-            print_pause("It seems that the power is out and you will have to investigate.")
+            print_pause("It seems that the power is out "
+                         "and you will have to investigate.")
         elif power_level >= 7:  # power on
             print_pause("Walking through the rusted door, you realize"
             " why it had been shut.")
@@ -139,7 +146,8 @@ def generator_room(items: list):
         print_pause("Power level has been set to:")
         print_pause(power_level)
         if power_level >= 7:
-            print_pause(f"Having set the power level to {power_level}, you make your way out of the generator room.")
+            print_pause(f"Having set the power level to {power_level},"
+                         " you make your way out of the generator room.")
         else:
             print_pause(f"Power level has been set to {power_level}.")
             reset = input("This may be too low, retry setting power level? (y/n)\n")
@@ -170,8 +178,10 @@ def generator_room(items: list):
 def machine_room(items: list):
     print_pause("You have made it to the machine room.")
     print_pause("Sensors alarm you to smoke coming from the corner of the room")
-    # this room is a trap, if you dont have the squirt gun when u enter, you lose the game.
-    # you will need the squirt gun to put out the fire in this room after turning the power on.
+    # this room is a trap, if you dont have
+    # the squirt gun when u enter, you lose the game.
+    # you will need the squirt gun to put out the fire 
+    # in this room after turning the power on.
     if "squirt_gun" in items:
         print_pause("Your squirt gun upgrade extinguishes the fire!!")
     else:
@@ -240,13 +250,14 @@ def tool_room(items: list):
 
 
 def pick_room(items: list):
+    room_choice = 0
     print_pause("Your memory loads the map, circuits compute your options...")
     print_pause("1. Science Room")
     print_pause("2. Generator Room")
     print_pause("3. Machine Room")
     print_pause("4. Tool Room")
     room_choice = input("Please enter a number from 1-4, or ??? if unsure:\n")
-    def room_chooser(items: list):
+    def room_chooser(items: list, room_choice):
         if room_choice == "1":
             science_room(items)
         elif room_choice == "2":
@@ -282,8 +293,7 @@ def part_two(items: list):
         part_two(items)
 
 
-def play_game():
-    global power_level
+def play_game(power_level):
     power_level = 0
     items = []
     intro()
@@ -299,3 +309,4 @@ def shortcut():
 
 # shortcut()
 play_game()
+

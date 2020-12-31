@@ -7,6 +7,7 @@
 import time
 import random
 
+global power_level
 
 def print_pause(string):
     time.sleep(0.35)
@@ -111,6 +112,9 @@ def ride_elevator(items: list):
         second_floor(items)
     elif floor == "3":
         third_floor(items)
+    elif floor == "42069":
+        print_pause("cheat code accepted!!")
+        shortcut()
     print_pause("You know what you need to do. Please choose another floor.")
 
 
@@ -124,7 +128,7 @@ def science_room(items: list):
     if "power" not in items:
         print_pause("You would think a facility with a science room would be"
                     " kept in top shape.")
-        print_pause("But not this one.")
+        print_pause("But not this one. Perhaps you need more strength to open.")
         print_pause("You make your way out of the science room.")
     elif "power" in items:
         print_pause("Your power upgrade allows you "
@@ -141,17 +145,19 @@ def science_room(items: list):
             print_pause("Wonderful, you have beaten the game.")
             exit()
     dotdotdot(1)
-    pick_room(items)
+    pick_room(items, power_level)
 
 
 def generator_room(items: list):
+    global power_level
     def change_power():
+        global power_level
         power_level = random.randint(1, 10)
         print_pause("Power level has been set to:")
-        print_pause(power_level)
+        print_pause(f"power level is {power_level}.")
         if power_level >= 7:
-            print_pause(f"Having set the power level to {power_level},"
-                        " you make your way out of the generator room.")
+            print_pause(f"You sheepishly set the power to {power_level},\n"
+                        "you make your way out of the generator room.")
         else:
             print_pause(f"Power level has been set to {power_level}.")
             reset = input("This may be too low, "
@@ -163,7 +169,7 @@ def generator_room(items: list):
                 print_pause("Have it your way.")
                 dotdotdot(3)
         dotdotdot(1)
-        pick_room(items)
+        pick_room(items, power_level)
 
     def intro():
         print_pause("You make your way to the generator room.")
@@ -186,8 +192,6 @@ def machine_room(items: list):
                 "the corner of the room")
     # this room is a trap, if you dont have
     # the squirt gun when u enter, you lose the game.
-    # you will need the squirt gun to put out the fire
-    # in this room after turning the power on.
     if "squirt_gun" in items:
         print_pause("Your squirt gun upgrade extinguishes the fire!!")
     else:
@@ -198,7 +202,7 @@ def machine_room(items: list):
         exit()
     print_pause("You make your way out of the machine room.")
     dotdotdot(1)
-    pick_room(items)
+    pick_room(items, power_level)
 
 
 def tool_room(items: list):
@@ -207,6 +211,7 @@ def tool_room(items: list):
     print_pause("You have made it to the tool room.")
     print_pause("There is a large vending machine with"
                 " all kinds of upgrades.")
+    print_pause(power_level)
     if power_level <= 6:  # power off.
         print_pause("Unfortunately, it seems the machine is out of order")
         print_pause("A small, dim, flashing screen shows "
@@ -259,18 +264,20 @@ def tool_room(items: list):
             print_pause("You are satisfied with all your upgrades.")
     print_pause("You make your way out of the tool room.")
     dotdotdot(3)
-    pick_room(items)
+    pick_room(items, power_level)
 
 
-def pick_room(items: list):
+def pick_room(items: list, powerlevel: int):
+    room_choice = 0
     print_pause("Your memory loads the map, circuits compute your options...")
     print_pause("1. Science Room")
     print_pause("2. Generator Room")
     print_pause("3. Machine Room")
     print_pause("4. Tool Room")
-    room_choice = input("Please enter a number from 1-4, or ??? if unsure:\n")
-
-    def room_chooser(room_choice, items: list):
+    print_pause(f"power level is {power_level}.")
+    
+    def room_chooser(items: list, room_choice):
+        room_choice = input("Please enter a number from 1-4, or ??? if unsure:\n")
         if room_choice == "1":
             science_room(items)
         elif room_choice == "2":
@@ -281,10 +288,11 @@ def pick_room(items: list):
             tool_room(items)
         elif room_choice == "???":
             room_choice = random.randint(1, 4)
-            room_chooser(items)
+            room_chooser(items, room_choice)
         else:
             print_pause("INVALID INPUT PLEASE TRY AGAIN")
-    room_chooser(items)
+            room_chooser()
+    room_chooser(items, room_choice)
     dotdotdot(1)
 
 
@@ -298,17 +306,18 @@ def part_two(items: list):
                     "there is a map on the wall.")
         print_pause("Studying the map, you memorize your options.")
         print_pause("Turning, you continue down the hallway.")
-        pick_room(items)
+        pick_room(items, power_level)
     elif choice == "n":
         dotdotdot(3)
         print_pause("Program terminated.")
         exit()
     else:
         print_pause("I did not understand, please re-enter response.")
-        part_two(items)
+        part_two(items, power_level)
 
 
-def play_game(power_level):
+def play_game():
+    global power_level
     power_level = 0
     items = []
     intro()

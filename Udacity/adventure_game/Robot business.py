@@ -20,17 +20,20 @@ def dotdotdot(n):
         print_pause("...")
 
 
-def upgrades(n, items: list):
-    n = int(input("Please choose an upgrade:\n"))
-    if n == 1:
+def upgrades(n: str, items: list):
+    n = input("Please choose an upgrade:\n")
+    if n == "1":
         print_pause("Unfortunately, the wrench is out of stock at the moment.")
         upgrades(n, items)
-    if n == 2:
+    elif n == "2":
         items.append("power")
         print_pause("Power bands acquired!")
-    if n == 3:
+    elif n == "3":
         items.append("squirt_gun")
         print_pause("Squirt gun acquired!")
+    else:
+        print_pause("Sorry, let's try that again.")
+        upgrades(n, items)
 
 
 def intro():

@@ -344,6 +344,6 @@ def shortcut():
     pick_room(items)
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': #reasons
     # play_game()
     shortcut()

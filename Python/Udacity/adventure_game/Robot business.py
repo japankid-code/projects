@@ -21,23 +21,24 @@ def dotdotdot(n):
 
 
 def upgrades(n: str, items: list):
-    n = input("Please choose an upgrade:\n")
-    if n == "1":
-        print_pause("Unfortunately, the wrench is out of stock at the moment.")
-        upgrades(n, items)
-    elif n == "2":
-        items.append("power")
-        print_pause("Power bands acquired!")
-    elif n == "3":
-        items.append("squirt_gun")
-        print_pause("Squirt gun acquired!")
-    else:
-        print_pause("Sorry, let's try that again.")
-        upgrades(n, items)
+    try:
+        n = int(input("Please choose an upgrade:\n"))
+        if n == 1:
+            print_pause("Unfortunately, the wrench is out of stock at the moment.")
+            upgrades(n, items)
+        elif n == 2:
+            items.append("power")
+            print_pause("Power bands acquired!")
+        elif n == 3:
+            items.append("squirt_gun")
+            print_pause("Squirt gun acquired!")
+    except ValueError:
+        print("Invalid input was used. Please try again")
+        # continue
 
 
 def intro():
-    print_pause("Humanity as it was once has ceased to exist.")
+    print_pause("Humanity as it once was has ceased to exist.")
     print_pause("You are a robot and have just arrived to start your "
                 "new assignment at the human generator plant.")
     print_pause("You make your way directly to the "
@@ -337,10 +338,12 @@ def play_game():
 
 def shortcut():
     global power_level
-    power_level = 0
+    power_level = 10
+    first = 0
     items = ["handbook", "ID chip", "assistant"]
-    part_two(items)
+    pick_room(items)
 
 
-# shortcut()
-play_game()
+if __name__ == '__main__':
+    # play_game()
+    shortcut()

@@ -345,5 +345,6 @@ def shortcut():
 
 
 if __name__ == '__main__': #reasons
-    # play_game()
-    shortcut()
+    # to manually run the play game script, do python adventure_game.play_game()
+    play_game()
+    # shortcut()

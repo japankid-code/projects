@@ -12,15 +12,21 @@
  */
  
 // change the values of `balance`, `checkBalance`, and `isActive` to test your code
-var balance = 325.00;
-var checkBalance = true;
-var isActive = false;
+var balance = -10;
+var checkBalance = false;
+var isActive = true;
 
 // your code goes here
 if (checkBalance === true) {
     if (isActive === false)
-        console.log("Your account is no longer active.")
-} else if (checkBalance === true) {
-    if (isActive === true)
-        balance.toFixed(2)
+        {console.log("Your account is no longer active.");}
+    else if (balance >= 0) 
+        {console.log("Your balance is "+balance.toFixed(2)+".");}
+    else if (balance === 0)
+        {console.log("Your account is empty.");}
+    else if (balance <= 0)
+        {console.log("Your balance is negative. Please contact the bank");}
+} 
+else {
+    console.log("Thank you. Have a nice day!!");
 }

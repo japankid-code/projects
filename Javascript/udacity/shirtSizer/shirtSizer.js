@@ -62,3 +62,4 @@ if ((shirtWidth>=26) && (shirtWidth<28) && (shirtLength>=33) && (shirtLength<34)
 if ((shirtWidth>=28) && (shirtWidth<32) && (shirtLength>=34) && (shirtLength<35) && (shirtSleeve>=10.13) && (shirtSleeve<11)) {
     console.log("3XL")
 }
+

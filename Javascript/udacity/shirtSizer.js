@@ -41,3 +41,24 @@ var shirtSleeve = 8.71;
 */
 
 // WRITE YOUR CODE HERE
+
+[shirtWidth, shirtLength, shirtSleeve, expectedSize]
+
+if ((shirtWidth>=18) && (shirtWidth<20) && (shirtLength>=28) && (shirtLength<29) && (shirtSleeve>=7) && (shirtSleeve<8.13)) {
+    console.log("S")
+}
+if ((shirtWidth>=20) && (shirtWidth<22) && (shirtLength>=29) && (shirtLength<30) && (shirtSleeve>=8.38) && (shirtSleeve<8.63)) {
+    console.log("M")
+}
+if ((shirtWidth>=22) && (shirtWidth<24) && (shirtLength>=31) && (shirtLength<32) && (shirtSleeve>=8.63) && (shirtSleeve<8.88)) {
+    console.log("L")
+}
+if ((shirtWidth>=24) && (shirtWidth<26) && (shirtLength>=32) && (shirtLength<33) && (shirtSleeve>=8.88) && (shirtSleeve<9.63)) {
+    console.log("XL")
+}
+if ((shirtWidth>=26) && (shirtWidth<28) && (shirtLength>=33) && (shirtLength<34) && (shirtSleeve>=8.13) && (shirtSleeve<9.63)) {
+    console.log("2XL")
+}
+if ((shirtWidth>=28) && (shirtWidth<32) && (shirtLength>=34) && (shirtLength<35) && (shirtSleeve>=10.13) && (shirtSleeve<11)) {
+    console.log("3XL")
+}

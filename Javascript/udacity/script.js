@@ -1,36 +1,24 @@
-/*
- * Programming Quiz: One Awesome Message (2-12)
- */
-
-/*
- * QUIZ REQUIREMENTS
- * 1. Create the following variables:
- *     - firstName
- *     - interest
- *     - hobby
- *
- * 2. Create `awesomeMessage` variable, and set it to a message using string concatenation and the variables above. The `awesomeMessage` variable should use `firstName`, `interest`, and `hobby`
- *
- * 3. The `awesomeMessage` variable should have the correct format, as shown below:
- * "Hi, my name is _____. I love ______. In my spare time, I like to ______."
- *
- * 4. Print `awesomeMessage` variable to the console using log() method
- */
- 
- /*
- * Example:
- * - Assuming, firstName would have been assigned to "Julia",
- *   interest to "cats", and hobby to "play video games" to produce the following message:
- * 
- *   Hi, my name is Julia. I love cats. In my spare time, I like to play video games.
- *
- * - Be sure to include spaces and periods where necessary!
- */
- 
- 
-// Add your code here
-var firstName = "Julia";
-var interest = "cats";
-var hobby = "play video games";
-var awesomeMessage = "Hi, my name is "+ firstName +". I love "+ interest +". In my spare time, I like to "+ hobby +".";
-console.log(awesomeMessage)
+switch (education) {
+    case 'no high school diploma':
+        salary = 25636;
+        break;
+    case 'a high school diploma' :
+        salary = 35,256;
+        break;
+    case "an Associate's degree":
+        salary = 41,496;
+        break;
+    case "a Bachelor's degree":
+        salary = 59124;
+        break;
+    case "a Master's degree":
+        salary = 69732;
+        break;
+    case "a Professional degree":
+        salary = 89960;
+        break;
+    case "a Doctoral degree":
+        salary = 84396;
+        break;
+}
+console.log("In 2015, a person with "+education+" earned an average of $"+salary+"/year.")

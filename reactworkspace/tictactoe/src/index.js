@@ -7,8 +7,8 @@ import './index.css';
 class Square extends React.Component {
   render() {
     return (
-      <button className="square">
-        {/* TODO */}
+      <button className="square" onClick={() => alert('click')}>
+        {this.props.value}  {/* this will make render show the value prop */}
       </button>
     );
   }
@@ -16,7 +16,7 @@ class Square extends React.Component {
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square />;
+    return <Square value={i} />; // this will pass a prop called value to the Square
   }
 
   render() {

@@ -5,27 +5,33 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null,
-    }
-  }
   render() {
     return (
       <button 
         className="square" 
         onClick={() => this.setState({value: 'X'})}
        >
-        {this.state.value}  {/* makes the value prop render text in the button */}
+        {this.state.value}  {/* considers state value to render text in the button */}
       </button>
     );
   }
 }
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null) // sets init state, array of 9 nulls corresponding to each square
+    }
+  }
+
   renderSquare(i) {
-    return <Square value={i} />; // this will pass the value prop to the Square
+    return (
+      <Square 
+        value={this.state.squares[i]} // this will pass the state to the Square from the array created
+        // earlier in the constructor. this informs the board about the current value of the sq
+        onclick={() => this.handleClick(i)}
+      />;
   }
 
   render() {

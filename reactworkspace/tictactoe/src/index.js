@@ -9,9 +9,9 @@ class Square extends React.Component {
     return (
       <button 
         className="square" 
-        onClick={() => this.setState({value: 'X'})}
-       >
-        {this.state.value}  {/* considers state value to render text in the button */}
+        onClick={() => this.props.onClick()}
+      >
+        {this.props.value}
       </button>
     );
   }
@@ -21,7 +21,7 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null) // sets init state, array of 9 nulls corresponding to each square
+      squares: Array(9).fill(null), // sets init state, array of 9 nulls corresponding to 9 sq
     }
   }
 
@@ -30,9 +30,10 @@ class Board extends React.Component {
       <Square 
         value={this.state.squares[i]} // this will pass the state to the Square from the array created
         // earlier in the constructor. this informs the board about the current value of the sq
-        onclick={() => this.handleClick(i)}
-      />;
-  }
+        onClick={() => this.handleClick(i)}
+      />
+      );
+  };
 
   render() {
     const status = 'Next player: X';

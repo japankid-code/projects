@@ -1,12 +1,48 @@
 /* copy pasta'd from: https://codepen.io/gaearon/pen/oWWQNa?editors=0100 */
 
-body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+#root {
+  width: 100%;
+  height: 100%;
 }
 
-ol, ul {
-  padding-left: 30px;
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 20px;
+  background-color: #0c2027;
+}
+
+.game {
+  width: 1000px;
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.game-info {
+  width: 0%;
+  height: 0%;
+}
+
+.game-board {
+  width: 300px;
+  height: 300px;
+  border: 5px solid #12313b;
+  border-radius: 21px;
+  background-color: #1f5768;
+  display: flex;
+  justify-content: center;
+
+}
+
+.board-row {
+  width: 270px;
+  height: 90px;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
 
 .board-row:after {
@@ -16,35 +52,25 @@ ol, ul {
 }
 
 .status {
-  margin-bottom: 10px;
+  align-self: center;
+  margin-bottom: 5px;
+  margin-top: 6px;
+  opacity: 0.6;
+  margin-left: 90px;
 }
 
 .square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
-  text-align: center;
-  width: 34px;
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+  background-color: #288a2b;
+  border: 4px solid #43a047;
+  border-radius: 40px;
+  outline: none;
 }
 
 .square:focus {
   outline: none;
-}
-
-.kbd-navigation .square:focus {
-  background: #ddd;
-}
-
-.game {
-  display: flex;
-  flex-direction: row;
 }
 
 .game-info {

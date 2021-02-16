@@ -55,10 +55,11 @@ body {
 
 .status {
   font: 10px "Century Gothic", Futura, sans-serif;
+  text-align: center;
   height: 0%;
   opacity: 0.6;
   margin-top: 2px;
-  margin-left: 34px;
+  /* margin-left: 40px; */
 }
 
 .square {

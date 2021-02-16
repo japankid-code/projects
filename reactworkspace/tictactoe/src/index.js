@@ -28,9 +28,9 @@ class Board extends React.Component {
   renderSquare(i) {
     return (
       <Square 
-        value={this.state.squares[i]} // this will pass the state to the Square from the array created
+        value={this.props.squares[i]} // this will pass the state to the Square from the array created
         // earlier in the constructor. this informs the board about the current value of the sq
-        onClick={() => this.handleClick(i)}
+        onClick={() => this.props.onClick(i)}
       />
       );
   };
@@ -76,6 +76,7 @@ class Game extends React.Component {
       xIsNext: true,
     };
   }
+
   render() {
     return (
       <div className="game">

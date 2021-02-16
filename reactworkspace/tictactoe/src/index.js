@@ -5,11 +5,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 function Square(props) {
-    return (
-      <button className="square" onClick={props.onClick}>
-        {props.value}
-      </button>
-    );
+  return (
+    <button className="square" onClick={props.onClick}>
+      {props.value}
+    </button>
+  );
 }
 
 class Board extends React.Component {
@@ -21,7 +21,7 @@ class Board extends React.Component {
         onClick={() => this.props.onClick(i)}
       />
       );
-  };
+  }
 
   render() {
     return (
@@ -68,9 +68,9 @@ class Game extends React.Component {
     console.log(this.state);
     this.setState({
       history: history.concat([{
-        squares: squares,
+        squares: squares
       }]),
-      xIsNext: !this.state.xisNext,
+      xIsNext: !this.state.xIsNext
     });
   }
 

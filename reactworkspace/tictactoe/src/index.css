@@ -48,12 +48,6 @@ body {
   margin-left: 9px;
 }
 
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
 .status {
   font: 10px "Century Gothic", Futura, sans-serif;
   align-self: center;

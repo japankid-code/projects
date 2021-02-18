@@ -130,3 +130,4 @@ dmypy.json
 
 # vs code files
 .vscode/
+reactworkspace/tictactoe/src/funk.js

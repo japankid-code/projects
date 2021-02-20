@@ -7,7 +7,7 @@ import './index.css';
 function Square(props) {
   return (
     <button className="square" onClick={props.onClick}>
-      {props.value}
+      &nbsp;{props.value}
     </button>
   );
 }
@@ -16,8 +16,7 @@ class Board extends React.Component {
   renderSquare(i) {
     return (
       <Square 
-        value={this.props.squares[i]} // this will pass the state to the Square from the array created
-        // earlier in the constructor. this informs the board about the current value of the sq
+        value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
       />
       );
@@ -60,6 +59,7 @@ class Game extends React.Component {
 
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    console.log(history)
     const current = history[history.length - 1];
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
@@ -89,12 +89,12 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
-      const desc = move ?
-        'Go to move #' + move :
-        'Go to game start';
+      // const desc = move ?
+      //   'move #' + move :
+      //   'game start';
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button className='histButton' onClick={() => this.jumpTo(move)}> </button>
         </li>
       )
     })
@@ -116,7 +116,7 @@ class Game extends React.Component {
           <div className='status'>{status}</div>
         </div>
         <div className="game-info">
-          <ol>{moves}</ol>
+          <ul>{moves}</ul>
         </div>
       </div>
     );

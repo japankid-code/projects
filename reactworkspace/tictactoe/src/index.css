@@ -28,8 +28,8 @@ body {
 }
 
 .game-board {
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   border: 5px solid #12313b;
   border-radius: 21px;
   background-color: #1f5768;
@@ -41,11 +41,11 @@ body {
 }
 
 .board-row {
-  width: 140px;
-  height: 45px;
-  margin-top: -6px;
-  margin-bottom: 6px;
-  margin-left: 9px;
+  width: 240px;
+  height: 70px;
+  margin-top: -5px;
+  margin-bottom: 5px;
+  margin-left: 18px;
 }
 
 .status {
@@ -53,17 +53,18 @@ body {
   align-self: center;
   height: 0%;
   opacity: 0.6;
-  margin-top: -12px;
+  margin-top: -1px;
 }
 
 .square {
-  width: 37px;
-  height: 37px;
+  width: 64px;
+  height: 64px;
   margin: 3px;
-  font: 11px "Century Gothic", Futura, sans-serif;
+  font: 14px "Century Gothic", Futura, sans-serif;
+  text-indent: -4px;
   background-color: #288a2b;
   border: 4px solid #43a047;
-  border-radius: 40px;
+  border-radius: 400px;
   outline: none;
 }
 
@@ -73,4 +74,22 @@ body {
 
 .game-info {
   margin-left: 20px;
+}
+
+ul {
+  list-style-type: none;
+  margin-left: -75px;
+  margin-top: -110px;
+}
+
+.histButton {
+  width: 20px;
+  height: 20px;
+  border: 4px solid #63c6fd;
+  border-radius: 20px;
+  background-color: #fbfdfc;
+  font-size: 5px;
+  padding-bottom: 4px;
+  transition-property: opacity;
+  transition-duration: 4s;
 }

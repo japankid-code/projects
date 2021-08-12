@@ -1,37 +1,37 @@
 export function duplicateCount(text: string): number {
-  // ...
   const lowercase: string = text.toLowerCase();
-  console.log("lowercase", lowercase);
-
-  const lowerArr: string[] = Array.from(lowercase);
-  console.log("lowerArr", lowerArr);
-
+  const lowerArr: string[] = Array.from(lowercase).sort();
   // convert to lower and create set of unique vals
-  const lowerSet: string[] = [...new Set(lowerArr)];
+  const lowerSetPre: string[] = [...new Set(lowerArr)];
+  const lowerSet: string[] = lowerSetPre.sort();
   // find the leftover elements after subtracting
-  console.log("lowerSet", lowerSet);
+  console.log("lower set", lowerSet);
 
-  function leftoverCounter(): any {
-    // const leftOverArray;
+  function leftoverCounter(): number {
+    // this function is designed to produce an array that is the difference
+    // of the lowerArr and lowerSet
+
+    // create a temporary array from which to splice
+    const tempSet: string[] = lowerSet;
+
+    const leftovers = lowerArr.filter((val, i) => {
+      // if the temporary set contains the character,
+      if (tempSet.includes(val)) {
+        // filter it out but also remove that character from the temp set.
+        tempSet.splice(0, 1);
+        return false;
+      } else {
+        return true;
+      }
+    });
+    const leftoverSet: string[] = [...new Set(leftovers)];
+    return leftoverSet.length;
   }
 
-  const leftovers = lowerArr.filter((val, i) => {
-    // subtract only as many elements as there are in the lowerSet
-    // return
-    if (val === lowerSet[i]) {
-      return false;
-    }
-    //     return i > lowerSet.length ? true : !lowerSet.includes(val)
-  });
-  console.log("leftovers", leftovers);
-
-  const leftoverSet: string[] = [...new Set(leftovers)];
   // find the number of dupes
   const dupesNum: number = lowerArr.length - lowerSet.length;
   // find the number of unique letters
-  const uniqueLetters: number = leftoverSet.length;
-  console.log("leftoverSet", leftoverSet);
+  const uniqueLetters: number = leftoverCounter();
 
-  console.log(dupesNum > uniqueLetters ? dupesNum : uniqueLetters);
-  return dupesNum > uniqueLetters ? dupesNum : uniqueLetters;
+  return uniqueLetters;
 }
